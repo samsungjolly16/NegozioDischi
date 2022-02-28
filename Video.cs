@@ -7,7 +7,7 @@ public class Video : ElementoDisco
 
     public override void Riproduci()
     {
-        Console.WriteLine($"Riproducendo il video {nome}");
+        Console.WriteLine($"Riproducendo il video {nome}"); 
         Thread.Sleep(this.Durata);
     }
 }
