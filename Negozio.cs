@@ -51,7 +51,7 @@ namespace NegozioDischi
         public void Restituzione(Disco d)
         {
             d.IsDisponibile = true;
-        }
+        } 
         public void RiproduciDisco(Disco d)
         {
             int sommaSecondi = 0;
