@@ -1,38 +1,77 @@
-public class Negozio
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NegozioDischi
 {
-    public List<Scaffale> scaffali { get; } = new List<Scaffale>();
-    public List<Disco> Ricerca(string titolo, string autore)
+    public class Negozio
     {
-        List<Disco> dischi = new List<Disco>();
-        foreach (Scaffale s in scaffali)
-            dischi.AddRange(s.Ricerca(titolo, autore));
-        return dischi;
-    }
-
-    public void Prestito(Disco d)
-    {
-        if (d.IsDisponibile)
+        public string Nome { get; private set; }
+        public Negozio(string nome)
+        {
+            Nome = nome;
+        }
+        public List<Scaffale> Scaffali { get; } = new List<Scaffale>();
+        public void AddScaffali(Scaffale s)
+        {
+            Scaffali.Add(s);
+        }
+        public void RicercaTitolo(Disco d)
+        {
+            foreach(Scaffale s in Scaffali)
+            {
+                foreach(Disco ds in s.Dischi)
+                {
+                    if (ds.Titolo == d.Titolo)
+                        Console.WriteLine("disco trovato");
+                    else
+                        Console.WriteLine("disco non trovato");
+                }
+            }
+        }
+        public void RicercaCantante(Disco d)
+        {
+            foreach (Scaffale s in Scaffali)
+            {
+                foreach (Disco ds in s.Dischi)
+                {
+                    if (ds.Cantante == d.Cantante)
+                        Console.WriteLine("disco trovato");
+                    else
+                        Console.WriteLine("disco non trovato");
+                }
+            }
+        }
+        public void Prestito(Disco d)
+        {
             d.IsDisponibile = false;
-        else
-            throw new Exception("Disco non disponibile.");
-    }
-
-    public void Restituisci(Disco d)
-    {
-        if (!d.IsDisponibile)
+        }
+        public void Restituzione(Disco d)
+        {
             d.IsDisponibile = true;
-        else
-            throw new Exception("Disco gia' disponibile");
-    }
+        }
+        public void RiproduciDisco(Disco d)
+        {
+            int sommaSecondi = 0;
+            foreach(Brano b in d.Brani)
+            {
+                sommaSecondi += b.Secondi;
+            }
+            Task.Factory.StartNew(Riproduci(sommaSecondi));
+        }
+        public void RiproduciBrano(Brano b)
+        {
 
-    public void Riproduci(Disco d)
-    {
-        Task.Factory.StartNew(() => d.Riproduci());
-    }
-    public void Riproduci(ElementoDisco e)
-    {
-        Task.Factory.StartNew(() => e.Riproduci());
+        }
+        public void Riproduci(int volte)
+        {
+            for(int i = 0; i < volte; i++)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("")
+            }
+        }
     }
 }
-
-

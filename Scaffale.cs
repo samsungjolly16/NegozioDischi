@@ -1,27 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-public class Scaffale
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NegozioDischi
 {
-
-    public string Genere { get; private set; }
-    public List<Disco> dischi;
-
-    public Scaffale(string genere)
+    public class Scaffale
     {
-        Genere = genere;
-    }
-
-    public List<Disco> Ricerca(string titolo, string autore)
-    {
-        return dischi.FindAll(d => d.IsDisponibile && (
-            d.GetAutore().Contains(autore) || d.GetTitolo().Contains(titolo)));
-    }
-
-    public void AddDisco(Disco d)
-    {
-        dischi.Add(d);
-    }
-    public void RemoveDisco(Disco d)
-    {
-        dischi.Remove(d);
+        public string Genere { get; private set; }
+        public Scaffale(string genere)
+        {
+            Genere = genere;
+        }
+        public List<Disco> Dischi { get; } = new List<Disco>();
+        public void AddDischi(Disco d)
+        {
+            Dischi.Add(d);
+        }
     }
 }

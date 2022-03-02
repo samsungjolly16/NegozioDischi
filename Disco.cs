@@ -1,8 +1,9 @@
 public abstract class Disco
 {
-    private string titolo;
-    private string autore;
-    private string codice;
+    public string Titolo { get; private set; }
+    public string Cantante { get;private set; }
+    private static int  Codice=0;
+    public List<NegozioDischi.Brano> Brani { get; } = new List<NegozioDischi.Brano>();
 
     private bool isDisponibile;
     public bool IsDisponibile
@@ -17,16 +18,15 @@ public abstract class Disco
         }
     }
 
-    public Disco(string titolo, string autore, string codice)
+    public Disco(string titolo, string autore)
     {
-        this.titolo = titolo;
-        this.autore = autore;
-        this.codice = codice;
+        Titolo = titolo;
+        Cantante = autore;
+        Codice = IncrementaCodice();
+        isDisponibile = true;
     }
-
-    public string GetAutore() => autore;
-    public string GetTitolo() => titolo;
-    public string GetCodice() => codice;
-
-    public abstract void Riproduci();
+    private int IncrementaCodice()
+    {
+        return Codice++;
+    }
 }

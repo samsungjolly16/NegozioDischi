@@ -1,13 +1,15 @@
-public class CD : Disco
-{
-    public List<Brano> brani = new List<Brano>();
-    public CD(string titolo, string autore, string codice) : base(titolo, autore, codice) { }
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public override void Riproduci()
+namespace NegozioDischi
+{
+    public class CD : Disco
     {
-        foreach (Brano b in brani)
+        public CD(string titolo, string autore) : base(titolo, autore)
         {
-            b.Riproduci();
         }
     }
 }

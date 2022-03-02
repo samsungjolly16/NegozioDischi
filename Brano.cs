@@ -1,9 +1,22 @@
-public class Brano : ElementoDisco{
-    public Brano(int durata, int numero, string nome): base(durata, numero, nome){}
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public override void Riproduci()
+namespace NegozioDischi
+{
+    public class Brano
     {
-        Console.WriteLine($"Riproducendo il brano {nome}");
-        Thread.Sleep(this.Durata);
+        public int Secondi { get; private set; }
+        public string Nome { get; private set; }
+        public int Numero { get; private set; }
+        public Brano(int secondi, string nome,int numero)
+        {
+            Secondi = secondi;
+            Nome = nome;
+            Numero = numero;
+        }
+
     }
 }
