@@ -59,18 +59,18 @@ namespace NegozioDischi
             {
                 sommaSecondi += b.Secondi;
             }
-            Task.Factory.StartNew(Riproduci(sommaSecondi));
+            Task.Factory.StartNew(Riproduci(()=>sommaSecondi,d.Titolo));
         }
         public void RiproduciBrano(Brano b)
         {
 
         }
-        public void Riproduci(int volte)
+        public void Riproduci(int volte,string nome)
         {
             for(int i = 0; i < volte; i++)
             {
                 Thread.Sleep(1000);
-                Console.WriteLine("")
+                Console.WriteLine("");
             }
         }
     }
